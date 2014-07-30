@@ -11,7 +11,14 @@ Mymdb.Droid/bin/*
 Mymdb.Droid/obj/*
 Mymdb.iOS/bin/*
 Mymdb.iOS/obj/*
+Mymdb.RT/bin/*
+Mymdb.RT/obj/*
+Mymdb.WP/bin/*
+Mymdb.WP/obj/*
 
 # Ignore nugets except for the config
 packages/*
 !packages/repositories.config
+
+*.suo
+*.user
