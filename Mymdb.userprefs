@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mymdb.iOS/Views/MovieViewController.cs">
+    <Files>
+      <File FileName="Mymdb.iOS/Views/MovieViewController.cs" Line="34" Column="4" />
+      <File FileName="Mymdb.Core/Services/StorageService.cs" Line="1" Column="1" />
+      <File FileName="Mymdb.Core/DataLayer/LocalDatabase.cs" Line="1" Column="1" />
+      <File FileName="Mymdb.Core/ViewModels/MovieViewModel.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="/Users/sparkhound/Projects/Mymdb/Mymdb.iOS/Views/MovieViewController.cs" line="86" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
