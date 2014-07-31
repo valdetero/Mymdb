@@ -11,7 +11,7 @@ namespace Mymdb.Core.DataLayer
 {
 	public class LocalDatabase
 	{
-		static object locker = new object();
+		private readonly AsyncLock locker = new AsyncLock();
 
 		SQLiteAsyncConnection database;
 
@@ -23,7 +23,7 @@ namespace Mymdb.Core.DataLayer
 
 		public Task<List<T>> GetItems<T>() where T : IBusinessEntity, new()
 		{
-			lock (locker)
+			using (locker.Lock())
 			{
 				return database.Table<T>().ToListAsync();
 			}
@@ -31,7 +31,7 @@ namespace Mymdb.Core.DataLayer
 
 		public Task<T> GetItem<T>(int id) where T : IBusinessEntity, new()
 		{
-			lock (locker)
+			using (locker.Lock())
 			{
 				return database.Table<T>().Where(x => x.Id == id).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
 			}
@@ -41,17 +41,15 @@ namespace Mymdb.Core.DataLayer
 		{
 			var exists = await database.Table<T>().Where(x => x.Id == item.Id).FirstOrDefaultAsync();
 
-			lock (locker)
+			using (await locker.LockAsync())
 			{
-				//Id is not an auto-increment
 				if (exists != null)
-//				if (item.Id != 0)
 				{
-					database.UpdateAsync(item).ContinueWith(t => t.Result);
+					await database.UpdateAsync(item);
 				}
 				else
 				{
-					database.InsertAsync(item).ContinueWith(t => t.Result);
+					await database.InsertAsync(item);
 				}
 				return item.Id;
 			}
@@ -59,7 +57,7 @@ namespace Mymdb.Core.DataLayer
 
 		public Task<int> DeleteItem<T>(int id) where T : IBusinessEntity, new()
 		{
-			lock (locker)
+			using (locker.Lock())
 			{
 				return database.DeleteAsync<T>(id);
 			}

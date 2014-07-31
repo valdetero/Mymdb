@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
 using Mymdb.Interfaces;
 using Mymdb.Model;
+using System.Windows.Input;
 
 namespace Mymdb.Core.ViewModels
 {
@@ -22,7 +24,7 @@ namespace Mymdb.Core.ViewModels
 			progressIndicator = IoC.ServiceContainer.Resolve<IProgressIndicator>();
 
 			NeedsUpdate = true;
-			Movies = new ObservableCollection<MovieViewModel>();
+			Movies = new ObservableCollection<Movie>();
 
 			this.IsBusyChanged = (busy) => 
 			{
@@ -36,8 +38,13 @@ namespace Mymdb.Core.ViewModels
 
 		public bool NeedsUpdate { get; set; }
 
-		public ObservableCollection<MovieViewModel> Movies { get; set; }
+		public ObservableCollection<Movie> Movies { get; set; }
 
+		private RelayCommand<bool> loadMoviesCommand;
+		public ICommand LoadMoviesCommand
+		{
+			get { return loadMoviesCommand ?? (loadMoviesCommand = new RelayCommand<bool>(async (loadImages) => await ExecuteLoadMoviesCommand(loadImages))); }
+		}
 		public async Task ExecuteLoadMoviesCommand(bool loadImages = false)
 		{
 			if (IsBusy)
@@ -51,30 +58,22 @@ namespace Mymdb.Core.ViewModels
 			{
 				var movies = await movieService.GetMoviesNowPlaying();
 				var savedMovies = await storageService.GetMovies();
-				MovieViewModel vm;
 
+				Movie movieToAdd = null;
 				foreach (var movie in movies)
 				{
-					vm = new MovieViewModel();
-					Movie saved = null;
 					if(savedMovies != null)
-						saved = savedMovies.SingleOrDefault(x => x.ImdbId == movie.ImdbId);
-					if(saved != null)
-						vm.Init(saved);
-					else
-						vm.Init(movie);
+						movieToAdd = savedMovies.SingleOrDefault(x => x.ImdbId == movie.ImdbId);
 
-					if (loadImages && !string.IsNullOrEmpty(movie.ImagePath))
-					{
-						movie.Image = await movieService.DownloadImage(movie.ImagePath);
-					}
+					if(movieToAdd == null)
+						movieToAdd = movie;
 
-					Movies.Add(vm);
+					Movies.Add(movieToAdd);
 				}
 			}
-			catch (Exception exception)
+			catch (Exception ex)
 			{
-				Debug.WriteLine("Unable to load movies");
+				Debug.WriteLine("Unable to load movies: " + ex.Message);
 			}
 			finally
 			{
@@ -82,6 +81,11 @@ namespace Mymdb.Core.ViewModels
 			}
 		}
 
+		private RelayCommand<string> getImageCommand;
+		public ICommand GetImageCommand
+		{
+			get { return getImageCommand ?? (getImageCommand = new RelayCommand<string>((item) => ExecuteGetImageCommand(item))); }
+		}
 		public string ExecuteGetImageCommand(string path)
 		{
 			if (IsBusy)
@@ -92,9 +96,9 @@ namespace Mymdb.Core.ViewModels
 			{
 				return movieService.CreateImageUrl(path);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				Debug.WriteLine("Unable to create image url");
+				Debug.WriteLine("Unable to create image url: " + ex.Message);
 			}
 			finally
 			{
@@ -103,6 +107,11 @@ namespace Mymdb.Core.ViewModels
 			return string.Empty;
 		}
 
+		private RelayCommand<string> downloadImageCommand;
+		public ICommand DownloadImageCommand
+		{
+			get { return downloadImageCommand ?? (downloadImageCommand = new RelayCommand<string>((item) => ExecuteDownloadImageCommand(item))); }
+		}
 		public Task<byte[]> ExecuteDownloadImageCommand(string path)
 		{
 			if (IsBusy)
@@ -114,9 +123,9 @@ namespace Mymdb.Core.ViewModels
 				var url = movieService.CreateImageUrl(path);
 				return movieService.DownloadImage(url);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				Debug.WriteLine("Unable to download image");
+				Debug.WriteLine("Unable to download image: " + ex.Message);
 			}
 			finally
 			{

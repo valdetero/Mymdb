@@ -43,6 +43,8 @@
     <Compile Include="ViewModels\MovieViewModel.cs" />
     <Compile Include="Helpers\ServiceContainer.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Helpers\AsyncLock.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Fody.1.24.0\build\Fody.targets" />

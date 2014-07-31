@@ -79,6 +79,11 @@ namespace Mymdb.Core.ViewModels
 		public string ImagePath { get; set; }
 		public System.IO.Stream Image { get; set; }
 
+		private RelayCommand saveMovieCommand;
+		public ICommand SaveMovieCommand
+		{
+			get { return saveMovieCommand ?? (saveMovieCommand = new RelayCommand(async () => await ExecuteSaveMovieCommand())); }
+		}
 		public async Task ExecuteSaveMovieCommand()
 		{
 			if (IsBusy)
@@ -109,6 +114,11 @@ namespace Mymdb.Core.ViewModels
 			}
 		}
 
+		private RelayCommand<int> deleteMovieCommand;
+		public ICommand DeleteMovieCommand
+		{
+			get { return deleteMovieCommand ?? (deleteMovieCommand = new RelayCommand<int>(async (id) => await ExecuteDeleteMovieCommand(id))); }
+		}
 		public async Task ExecuteDeleteMovieCommand(int id)
 		{
 			if (IsBusy)

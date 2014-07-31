@@ -7,6 +7,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.Dialog;
 using Mymdb.Core.ViewModels;
+using Mymdb.Model;
 
 namespace Mymdb.iOS
 {
@@ -35,11 +36,11 @@ namespace Mymdb.iOS
 			}
 		}
 
-		Element createElement(MovieViewModel movie)
+		Element createElement(Movie movie)
 		{
-			var image = (string.IsNullOrEmpty(movie.ImagePath)) ?
+			var image = (string.IsNullOrEmpty(movie.ImageUrl)) ?
 				(UIImage)null :
-				new UIImage(NSData.FromUrl(new NSUrl(viewModel.ExecuteGetImageCommand(movie.ImagePath))));
+				new UIImage(NSData.FromUrl(new NSUrl(viewModel.ExecuteGetImageCommand(movie.ImageUrl))));
 
 			return new ImageStringElement(movie.Title, () =>
 			{
