@@ -11,6 +11,8 @@ Mymdb.Droid/bin/*
 Mymdb.Droid/obj/*
 Mymdb.iOS/bin/*
 Mymdb.iOS/obj/*
+Mymdb.iOS.Test/bin/*
+Mymdb.iOS.Test/obj/*
 Mymdb.RT/bin/*
 Mymdb.RT/obj/*
 Mymdb.WP/bin/*
