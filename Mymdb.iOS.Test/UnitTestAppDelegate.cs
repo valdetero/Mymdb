@@ -31,8 +31,6 @@ namespace Mymdb.iOS.Test
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
 			runner = new TouchRunner(window);
 
-			ServiceRegistrar.Init();
-
 			// register every tests included in the main application/assembly
 			runner.Add(System.Reflection.Assembly.GetExecutingAssembly());
 

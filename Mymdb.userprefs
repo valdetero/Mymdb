@@ -1,20 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|Mixed Platforms" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Mymdb.Core/Services/MovieDatabaseService.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Seth's iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mymdb.iOS.Test/Main.cs">
     <Files>
-      <File FileName="Mymdb.iOS.Test/UnitTestAppDelegate.cs" Line="17" Column="30" />
-      <File FileName="Mymdb.iOS/AppDelegate.cs" Line="32" Column="4" />
-      <File FileName="Mymdb.iOS.Test/MovieServiceTests.cs" Line="23" Column="1" />
-      <File FileName="Mymdb.Core/Services/MovieDatabaseService.cs" Line="1" Column="1" />
+      <File FileName="Mymdb.iOS.Test/StorageServiceTests.cs" Line="38" Column="24" />
+      <File FileName="Mymdb.Shared/ServiceRegistrar.cs" Line="17" Column="3" />
+      <File FileName="Mymdb.iOS.Test/UnitTestAppDelegate.cs" Line="32" Column="37" />
+      <File FileName="Mymdb.iOS.Test/MovieServiceTests.cs" Line="32" Column="1" />
+      <File FileName="Mymdb.iOS.Test/Main.cs" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Mymdb.Core" expanded="True">
             <Node name="Interfaces" expanded="True" />
-            <Node name="Services" expanded="True" />
           </Node>
-          <Node name="Mymdb.iOS" expanded="True" />
           <Node name="Mymdb.iOS.Test" expanded="True" selected="True" />
         </State>
       </Pad>
@@ -23,8 +22,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint enabled="false" file="/Users/sparkhound/Projects/Mymdb/Mymdb.iOS/Views/MovieViewController.cs" line="86" column="1" />
-      <Breakpoint file="/Users/sparkhound/Dropbox/Projects/PresenationProject/Mymdb/Mymdb.Core/Services/MovieDatabaseService.cs" line="26" column="1" />
-      <Breakpoint file="/Users/sparkhound/Dropbox/Projects/PresenationProject/Mymdb/Mymdb.Core/Services/MovieDatabaseService.cs" line="32" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

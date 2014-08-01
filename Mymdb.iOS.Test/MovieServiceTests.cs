@@ -16,6 +16,13 @@ namespace Mymdb.iOS.Test
 			IoC.ServiceContainer.Register<IMovieDatabaseService>(() => new MovieDatabaseService());
 		}
 
+		[TestFixtureTearDown]
+		public void CleanUp()
+		{
+			IoC.ServiceContainer.Clear();
+			GC.Collect();
+		}
+
 		[Test, Timeout(Int32.MaxValue)]
 		public async Task GetMovie()
 		{
