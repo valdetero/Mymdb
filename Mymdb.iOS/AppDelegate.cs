@@ -5,6 +5,8 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
+using GoogleAnalytics.iOS;
+
 namespace Mymdb.iOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
@@ -16,6 +18,7 @@ namespace Mymdb.iOS
 		// class-level declarations
 		UIWindow window;
 		public static UIStoryboard Storyboard = UIStoryboard.FromName("Movie", null);
+		public IGAITracker Tracker;
 
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this
@@ -30,6 +33,7 @@ namespace Mymdb.iOS
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
 
 			ServiceRegistrar.Init();
+			InitAnalytics();
 
 			// If you have defined a root view controller, set it here:
 			window.RootViewController = new UINavigationController(new MoviesViewController());
@@ -38,6 +42,18 @@ namespace Mymdb.iOS
 			window.MakeKeyAndVisible();
 			
 			return true;
+		}
+
+		private void InitAnalytics()
+		{
+			// Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+			GAI.SharedInstance.DispatchInterval = 20;
+
+			// Optional: automatically send uncaught exceptions to Google Analytics.
+			GAI.SharedInstance.TrackUncaughtExceptions = true;
+
+			// Initialize tracker.
+			Tracker = GAI.SharedInstance.GetTracker (Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
 		}
 	}
 }

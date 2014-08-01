@@ -112,6 +112,12 @@
       <HintPath>..\Components\btprogresshud-1.10\lib\ios\BTProgressHUD.dll</HintPath>
     </Reference>
     <Reference Include="MonoTouch.Dialog-1" />
+    <Reference Include="Mindscape.Raygun4Net.Xamarin.iOS">
+      <HintPath>..\packages\Mindscape.Raygun4Net.3.2.0\lib\MonoTouch\Mindscape.Raygun4Net.Xamarin.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleAnalytics.iOS">
+      <HintPath>..\Components\googleanalytics-3.0.7\lib\ios\GoogleAnalytics.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -145,6 +151,10 @@
   <ItemGroup>
     <XamarinComponentReference Include="btprogresshud">
       <Version>1.10</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="googleanalytics">
+      <Version>3.0.7</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

@@ -1,24 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Seth's iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Mymdb.iOS.Test/Main.cs">
-    <Files>
-      <File FileName="Mymdb.iOS.Test/StorageServiceTests.cs" Line="38" Column="24" />
-      <File FileName="Mymdb.Shared/ServiceRegistrar.cs" Line="17" Column="3" />
-      <File FileName="Mymdb.iOS.Test/UnitTestAppDelegate.cs" Line="32" Column="37" />
-      <File FileName="Mymdb.iOS.Test/MovieServiceTests.cs" Line="32" Column="1" />
-      <File FileName="Mymdb.iOS.Test/Main.cs" Line="17" Column="1" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Mymdb.Core" expanded="True">
-            <Node name="Interfaces" expanded="True" />
-          </Node>
-          <Node name="Mymdb.iOS.Test" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint enabled="false" file="/Users/sparkhound/Projects/Mymdb/Mymdb.iOS/Views/MovieViewController.cs" line="86" column="1" />

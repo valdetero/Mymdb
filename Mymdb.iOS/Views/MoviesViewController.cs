@@ -8,6 +8,7 @@ using MonoTouch.UIKit;
 using MonoTouch.Dialog;
 using Mymdb.Core.ViewModels;
 using Mymdb.Model;
+using GoogleAnalytics.iOS;
 
 namespace Mymdb.iOS
 {
@@ -18,6 +19,15 @@ namespace Mymdb.iOS
 		public MoviesViewController() : base(UITableViewStyle.Plain, null)
 		{
 			viewModel = IoC.ServiceContainer.Resolve<MoviesViewModel>();
+		}
+
+		public override void ViewDidAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
+
+			GAI.SharedInstance.DefaultTracker.Set(GAIConstants.ScreenName, "Movies View");
+
+			GAI.SharedInstance.DefaultTracker.Send(GAIDictionaryBuilder.CreateAppView().Build());
 		}
 
 		public async override void ViewDidLoad()
