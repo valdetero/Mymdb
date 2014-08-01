@@ -1,27 +1,28 @@
 # Ignore Component samples
-Components/AndHUD-1.3.1/Samples/*
-Components/btprogresshud-1.10/Samples/*
-Components/googleanalytics-3.0.7/Samples/*
-Components/raygun4net-2.0.6/Samples/*
-#Components/*/Samples/*
+#Components/AndHUD-1.3.1/Samples/*
+#Components/btprogresshud-1.10/Samples/*
+#Components/googleanalytics-3.0.7/Samples/*
+#Components/raygun4net-2.0.6/Samples/*
+Components/*/Samples/*
 
 # Ignore bin/obj directories
-Mymdb.Core/bin/*
-Mymdb.Core/obj/*
-Mymdb.Model/bin/*
-Mymdb.Model/obj/*
-Mymdb.Droid/bin/*
-Mymdb.Droid/obj/*
-Mymdb.iOS/bin/*
-Mymdb.iOS/obj/*
-Mymdb.iOS.Test/bin/*
-Mymdb.iOS.Test/obj/*
-Mymdb.RT/bin/*
-Mymdb.RT/obj/*
-Mymdb.WP/bin/*
-Mymdb.WP/obj/*
-#*/obj/*
-#*/bin/*
+#Mymdb.Core/bin/*
+#Mymdb.Core/obj/*
+#Mymdb.Model/bin/*
+#Mymdb.Model/obj/*
+#Mymdb.Droid/bin/*
+#Mymdb.Droid/obj/*
+#Mymdb.iOS/bin/*
+#Mymdb.iOS/obj/*
+#Mymdb.iOS.Test/bin/*
+#Mymdb.iOS.Test/obj/*
+#Mymdb.RT/bin/*
+#Mymdb.RT/obj/*
+#Mymdb.WP/bin/*
+#Mymdb.WP/obj/*
+*/obj/*
+*/bin/*
+*.bak
 
 # Ignore nugets except for the config
 packages/*
