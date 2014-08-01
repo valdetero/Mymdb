@@ -53,7 +53,9 @@ namespace Mymdb.iOS
 			GAI.SharedInstance.TrackUncaughtExceptions = true;
 
 			// Initialize tracker.
-			Tracker = GAI.SharedInstance.GetTracker (Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
+			Tracker = GAI.SharedInstance.GetTracker(Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
+
+			Segment.Analytics.Initialize(Mymdb.Core.Constants.SegmentIO.ApiKey);
 		}
 	}
 }
