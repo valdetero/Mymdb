@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 using Mymdb.Interfaces;
 using Mymdb.Model;
-using System.Windows.Input;
+
+using Xamarin.Forms;
 
 namespace Mymdb.Core.ViewModels
 {
@@ -24,7 +26,8 @@ namespace Mymdb.Core.ViewModels
 			progressIndicator = IoC.ServiceContainer.Resolve<IProgressIndicator>();
 
 			NeedsUpdate = true;
-			Movies = new ObservableCollection<Movie>();
+//			Movies = new ObservableCollection<Movie>();
+			Movies = new ObservableCollection<MovieViewModel>();
 
 			this.IsBusyChanged = (busy) => 
 			{
@@ -38,7 +41,8 @@ namespace Mymdb.Core.ViewModels
 
 		public bool NeedsUpdate { get; set; }
 
-		public ObservableCollection<Movie> Movies { get; set; }
+//		public ObservableCollection<Movie> Movies { get; set; }
+		public ObservableCollection<MovieViewModel> Movies { get; set; }
 
 		private RelayCommand<bool> loadMoviesCommand;
 		public ICommand LoadMoviesCommand
@@ -68,7 +72,11 @@ namespace Mymdb.Core.ViewModels
 					if(movieToAdd == null)
 						movieToAdd = movie;
 
-					Movies.Add(movieToAdd);
+					MovieViewModel vm = new MovieViewModel();
+					vm.Init(movieToAdd);
+
+//					Movies.Add(movieToAdd);
+					Movies.Add(vm);
 				}
 			}
 			catch (Exception ex)

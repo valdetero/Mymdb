@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -128,7 +128,7 @@
     <Compile Include="StorageServiceTests.cs" />
   </ItemGroup>
   <Import Project="..\Mymdb.Shared\Mymdb.Shared.projitems" Label="Shared" Condition="Exists('..\Mymdb.Shared\Mymdb.Shared.projitems')" />
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Mymdb.Core\Mymdb.Core.csproj">
       <Project>{E649E772-DCF0-484D-948C-AE0D553AD2EC}</Project>

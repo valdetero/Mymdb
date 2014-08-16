@@ -7,6 +7,10 @@ using MonoTouch.UIKit;
 
 using GoogleAnalytics.iOS;
 
+using Mymdb.UI;
+
+using Xamarin.Forms;
+
 namespace Mymdb.iOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
@@ -29,14 +33,13 @@ namespace Mymdb.iOS
 		//
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			// create a new window instance based on the screen size
-			window = new UIWindow(UIScreen.MainScreen.Bounds);
-
+			Forms.Init();
 			ServiceRegistrar.Init();
 			InitAnalytics();
 
-			// If you have defined a root view controller, set it here:
-			window.RootViewController = new UINavigationController(new MoviesViewController());
+			window = new UIWindow(UIScreen.MainScreen.Bounds);
+//			window.RootViewController = new UINavigationController(new MoviesViewController());
+			window.RootViewController = App.GetMainPage().CreateViewController();
 			
 			// make the window visible
 			window.MakeKeyAndVisible();

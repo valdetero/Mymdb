@@ -124,6 +124,15 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Components\Analytics-1.0.0\lib\ios\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.Platform.iOS">
+      <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -144,6 +153,7 @@
   </ItemGroup>
   <Import Project="..\Mymdb.Shared\Mymdb.Shared.projitems" Label="Shared" Condition="Exists('..\Mymdb.Shared\Mymdb.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <ProjectReference Include="..\Mymdb.Core\Mymdb.Core.csproj">
       <Project>{E649E772-DCF0-484D-948C-AE0D553AD2EC}</Project>
@@ -152,6 +162,10 @@
     <ProjectReference Include="..\Mymdb.Model\Mymdb.Model.csproj">
       <Project>{7F0CE526-8BE9-4190-A8A6-C5DA83304E65}</Project>
       <Name>Mymdb.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mymdb.UI\Mymdb.UI.csproj">
+      <Project>{66985485-8307-4A0E-A903-3B6B1304E4CC}</Project>
+      <Name>Mymdb.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

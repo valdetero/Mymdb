@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Mymdb.Interfaces;
 using Mymdb.Model;
 using Mymdb.Core.Services;
+using Xamarin.Forms;
 
 namespace Mymdb.Core.ViewModels
 {
@@ -26,7 +27,6 @@ namespace Mymdb.Core.ViewModels
 			{
 				currentMovie = 	await storageService.GetMovie(id) ?? 
 								await movieService.GetMovie(id);
-
 			}
 			else
 			{
@@ -78,6 +78,19 @@ namespace Mymdb.Core.ViewModels
 		public bool IsFavorite { get; set; }
 		public string ImagePath { get; set; }
 		public System.IO.Stream Image { get; set; }
+		public ImageSource Photo 
+		{ 
+			get {
+				if(string.IsNullOrEmpty(ImagePath))
+					return null;
+
+				return Device.OnPlatform(
+					UriImageSource.FromUri(new Uri(ImagePath)), 
+					UriImageSource.FromUri(new Uri(ImagePath)),  
+					UriImageSource.FromUri(new Uri(ImagePath))
+				);
+			} 
+		}
 
 		private RelayCommand saveMovieCommand;
 		public ICommand SaveMovieCommand

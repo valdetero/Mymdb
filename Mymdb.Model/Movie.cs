@@ -1,6 +1,7 @@
 ﻿using System;
 using SQLite.Net.Attributes;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace Mymdb.Model
 {

@@ -25,8 +25,8 @@ namespace Mymdb.iOS
 		{
 			base.ViewDidAppear(animated);
 
+			GAI.SharedInstance.DefaultTracker.Set(GAIConstants.ClientId, UIDevice.CurrentDevice.IdentifierForVendor.ToString());
 			GAI.SharedInstance.DefaultTracker.Set(GAIConstants.ScreenName, "Movies View");
-
 			GAI.SharedInstance.DefaultTracker.Send(GAIDictionaryBuilder.CreateAppView().Build());
 
 			Segment.Analytics.Client.Screen(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), "Movies View");
@@ -60,6 +60,20 @@ namespace Mymdb.iOS
 				controller.Init(movie.Id);
 				this.NavigationController.PushViewController(controller, true);
 			}, image);
+		}
+
+		Element createElement(MovieViewModel movie)
+		{
+			var image = (string.IsNullOrEmpty(movie.ImagePath)) ?
+				(UIImage)null :
+				new UIImage(NSData.FromUrl(new NSUrl(viewModel.ExecuteGetImageCommand(movie.ImagePath))));
+
+			return new ImageStringElement(movie.Title, () =>
+				{
+					var controller = AppDelegate.Storyboard.InstantiateViewController("MovieViewController") as MovieViewController;
+					controller.Init(movie.Id);
+					this.NavigationController.PushViewController(controller, true);
+				}, image);
 		}
 	}
 }
