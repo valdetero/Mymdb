@@ -405,7 +405,7 @@ Global
 		{E649E772-DCF0-484D-948C-AE0D553AD2EC}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Mymdb.Analysis\Mymdb.Analysis.csproj
+		StartupItem = Mymdb.iOS\Mymdb.iOS.csproj
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Mymdb.Shared\Mymdb.Shared.projitems*{a526647c-d1be-4f99-b0b1-e4cd8a3accfc}*SharedItemsImports = 4
