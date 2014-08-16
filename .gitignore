@@ -30,4 +30,3 @@ packages/*
 
 *.suo
 *.user
-Mymdb.Core/Helpers/Constants.cs
