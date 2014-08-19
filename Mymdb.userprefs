@@ -1,15 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|Mixed Platforms" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Mymdb.iOS.Test/MovieServiceTests.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mymdb.Core/Helpers/Constants.cs">
     <Files>
-      <File FileName="Mymdb.iOS.Test/MovieServiceTests.cs" Line="1" Column="1" />
+      <File FileName="Mymdb.Core/Helpers/Constants.cs" Line="3" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Mymdb.iOS" expanded="True" selected="True">
+          <Node name="Mymdb.Core" expanded="True">
+            <Node name="Helpers" expanded="True">
+              <Node name="Constants.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="Mymdb.iOS" expanded="True">
             <Node name="Resources" expanded="True" />
           </Node>
+          <Node name="Mymdb.iOS.Test" expanded="True" />
         </State>
       </Pad>
     </Pads>
