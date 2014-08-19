@@ -224,6 +224,7 @@ namespace Mymdb.Analysis
 			}
 			Console.WriteLine(string.Empty);
 			Console.WriteLine("DONE");
+            Console.ReadLine();
 		}
 	}
 }
