@@ -12,5 +12,5 @@ before_install:
  - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
 
 script:
- - xbuild Mymdb.sln
+ - xbuild Mymdb.iOS/Mymdb.iOS.csproj
 # - .ci/nunit.sh Mymdb.iOS.Test/bin/Debug/Tests.dll
