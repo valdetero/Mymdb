@@ -4,21 +4,6 @@
     <Files>
       <File FileName="Mymdb.Core/Helpers/Constants.cs" Line="3" Column="3" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Mymdb.Core" expanded="True">
-            <Node name="Helpers" expanded="True">
-              <Node name="Constants.cs" selected="True" />
-            </Node>
-          </Node>
-          <Node name="Mymdb.iOS" expanded="True">
-            <Node name="Resources" expanded="True" />
-          </Node>
-          <Node name="Mymdb.iOS.Test" expanded="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
