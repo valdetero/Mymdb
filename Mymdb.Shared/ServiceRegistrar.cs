@@ -13,8 +13,8 @@ using Mymdb.Core.ViewModels;
 namespace Mymdb
 {
 	public static class ServiceRegistrar
-	{
-		public static void Init()
+    {
+        public static void Init()
 		{
 			SQLiteAsyncConnection connection = null;
 			ISQLitePlatform platform = null;
