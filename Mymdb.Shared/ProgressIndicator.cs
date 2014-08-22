@@ -9,7 +9,8 @@ namespace Mymdb
 #if __IOS__
 			BigTed.BTProgressHUD.Show(message);
 #elif __ANDROID__
-			AndroidHUD.AndHUD.Shared.Show(null, message);
+            var context = IoC.ServiceContainer.Resolve<Xamarin.Forms.Platform.Android.AndroidActivity>();
+            AndroidHUD.AndHUD.Shared.Show(context, message);
 #endif
 		}
 

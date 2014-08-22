@@ -8,6 +8,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Mymdb.WP.Resources;
+using Mymdb.UI;
+using Xamarin.Forms;
 
 namespace Mymdb.WP
 {
@@ -19,7 +21,9 @@ namespace Mymdb.WP
             InitializeComponent();
 
             // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            Forms.Init();
+            ServiceRegistrar.Init();
+            Content = UI.App.GetMainPage().ConvertPageToUIElement(this);
         }
 
         // Sample code for building a localized ApplicationBar
