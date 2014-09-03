@@ -8,9 +8,9 @@ namespace Mymdb.Analysis
 {
 	class Program
 	{
-		public const bool COUNT_BLANK_LINES = false;
-		public const bool COUNT_COMMENTS = false;
-		public const bool USE_XAMARIN_FORMS = true;
+		public static bool COUNT_BLANK_LINES = false;
+		public static bool COUNT_COMMENTS = false;
+		public static bool USE_XAMARIN_FORMS = true;
 
 		static void Main(string[] args)
 		{
@@ -20,7 +20,6 @@ namespace Mymdb.Analysis
 				path = Path.Combine(Path.GetDirectoryName(path), string.Empty);
 			}
 			var projects = new List<Solution> {
-
 
 				new Solution {
 					Name = "Android",
@@ -67,9 +66,15 @@ namespace Mymdb.Analysis
 				},
 			};
 
+            Console.WriteLine("\nUsing Xamarin.Forms");
+            new Program().Run(projects);
+            USE_XAMARIN_FORMS = false;
+            Console.WriteLine("\nNot using Xamarin.Forms");
+            new Program().Run(projects);
 
-			new Program().Run(projects);
-		}
+            Console.WriteLine("DONE");
+            Console.ReadLine();
+        }
 
 		class Solution
 		{
@@ -180,7 +185,7 @@ namespace Mymdb.Analysis
 						if(USE_XAMARIN_FORMS) {
 							if(inc.Contains("Movie.storyboard") ||
 							   inc.Contains("MovieViewController.cs") ||
-							   inc.Contains("MovieSViewController.cs"))
+							   inc.Contains("MoviesViewController.cs"))
 								continue;
 						}
 
@@ -228,8 +233,6 @@ namespace Mymdb.Analysis
 					sln.SharedLinesOfCode / (double)sln.TotalLinesOfCode);
 			}
 			Console.WriteLine(string.Empty);
-			Console.WriteLine("DONE");
-            Console.ReadLine();
 		}
 	}
 }

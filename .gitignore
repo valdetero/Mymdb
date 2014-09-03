@@ -31,3 +31,4 @@ packages/*
 *.suo
 *.user
 ARCHIVE/*
+*.sln.ide/*
