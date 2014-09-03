@@ -8,6 +8,7 @@ using Mymdb.Core.ViewModels;
 using Mymdb.Model;
 using Mymdb.Interfaces;
 using GoogleAnalytics.iOS;
+using Acr.XamForms.UserDialogs;
 
 namespace Mymdb.iOS
 {
@@ -15,7 +16,7 @@ namespace Mymdb.iOS
 	{
 		MovieViewModel viewModel;
 		int id;
-		IProgressIndicator progress;
+		IProgressDialog progress;
 
 		public MovieViewController(IntPtr handle) : base(handle)
 		{
@@ -23,14 +24,14 @@ namespace Mymdb.iOS
 		public MovieViewController(int id)
 		{
 			viewModel = IoC.ServiceContainer.Resolve<MovieViewModel>();
-			progress = IoC.ServiceContainer.Resolve<IProgressIndicator>();
+			progress = IoC.ServiceContainer.Resolve<IProgressDialog>();
 			this.id = id;
 		}
 
 		public void Init(int id)
 		{
 			viewModel = IoC.ServiceContainer.Resolve<MovieViewModel>();
-			progress = IoC.ServiceContainer.Resolve<IProgressIndicator>();
+			progress = IoC.ServiceContainer.Resolve<IProgressDialog>();
 			this.id = id;
 		}
 
@@ -42,7 +43,7 @@ namespace Mymdb.iOS
 			GAI.SharedInstance.DefaultTracker.Set(GAIConstants.ScreenName, "Movie View");
 			GAI.SharedInstance.DefaultTracker.Send(GAIDictionaryBuilder.CreateAppView().Build());
 
-			Segment.Analytics.Client.Screen(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), "Movie View");
+//			Segment.Analytics.Client.Screen(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), "Movie View");
 		}
 
 		public async override void ViewDidLoad()

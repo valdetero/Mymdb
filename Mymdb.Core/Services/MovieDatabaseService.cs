@@ -10,11 +10,16 @@ namespace Mymdb.Core.Services
 	{
 		public string CreateImageUrl(string imageName)
 		{
-			return Constants.TheMovieDatabase.ImagePath + imageName;
+			return string.IsNullOrWhiteSpace(imageName) 
+				? string.Empty 
+				: Constants.TheMovieDatabase.ImagePath + imageName;
 		}
 
 		public async System.Threading.Tasks.Task<byte[]> DownloadImage(string path)
 		{
+			if(string.IsNullOrEmpty(path))
+				return new byte[0];
+
 			using (var client = new HttpClient())
 			{
 				return await client.GetByteArrayAsync(path);

@@ -10,6 +10,8 @@ using Mymdb.Interfaces;
 using Mymdb.Model;
 
 using Xamarin.Forms;
+using Acr.XamForms;
+using Acr.XamForms.UserDialogs;
 
 namespace Mymdb.Core.ViewModels
 {
@@ -17,31 +19,29 @@ namespace Mymdb.Core.ViewModels
 	{
 		private IMovieDatabaseService movieService;
 		private IStorageService storageService;
-		private IProgressIndicator progressIndicator;
+		private IProgressDialog progressDialog;
 
 		public MoviesViewModel()
 		{
 			movieService = IoC.ServiceContainer.Resolve<IMovieDatabaseService>();
 			storageService = IoC.ServiceContainer.Resolve<IStorageService>();
-			progressIndicator = IoC.ServiceContainer.Resolve<IProgressIndicator>();
+			progressDialog = IoC.ServiceContainer.Resolve<IProgressDialog>();
 
 			NeedsUpdate = true;
-//			Movies = new ObservableCollection<Movie>();
 			Movies = new ObservableCollection<MovieViewModel>();
 
 			this.IsBusyChanged = (busy) => 
 			{
 				if(busy)
-					progressIndicator.Show();
+					progressDialog.Show();
 				else
-					progressIndicator.Hide();
+					progressDialog.Hide();
 			};
 		}
 
 
 		public bool NeedsUpdate { get; set; }
 
-//		public ObservableCollection<Movie> Movies { get; set; }
 		public ObservableCollection<MovieViewModel> Movies { get; set; }
 
 		private RelayCommand<bool> loadMoviesCommand;
@@ -67,16 +67,36 @@ namespace Mymdb.Core.ViewModels
 				foreach (var movie in movies)
 				{
 					if(savedMovies != null)
-						movieToAdd = savedMovies.SingleOrDefault(x => x.ImdbId == movie.ImdbId);
+					{
+						foreach (var savedMovie in savedMovies.OrderBy(x => x.Title).ToList()) 
+						{
+							//movie from service exists in local db
+							if(movie.Id == savedMovie.Id)
+							{
+								movieToAdd = savedMovie;
+								savedMovies.Remove(savedMovie);
+								break;
+							}
+							//local movie doesn't exist in service (since they are ordered by title)
+							//add it now so they are still sorted correctly
+							if(String.Compare(movie.Title, savedMovie.Title) > 0)
+							{
+								await addMovie(savedMovie);
+								savedMovies.Remove(savedMovie);
+							}
+						}
+					}
 
 					if(movieToAdd == null)
 						movieToAdd = movie;
 
-					MovieViewModel vm = new MovieViewModel();
-					vm.Init(movieToAdd);
+					await addMovie(movieToAdd);
+				}
 
-//					Movies.Add(movieToAdd);
-					Movies.Add(vm);
+				//add any remaining local movies
+				foreach(var movie in savedMovies) 
+				{
+					await addMovie(movie);
 				}
 			}
 			catch (Exception ex)
@@ -87,6 +107,14 @@ namespace Mymdb.Core.ViewModels
 			{
 				IsBusy = false;
 			}
+		}
+
+		private async Task addMovie(Movie movie)
+		{
+			var vm = new MovieViewModel();
+			await vm.Init(movie);
+
+			Movies.Add(vm);
 		}
 
 		private RelayCommand<string> getImageCommand;

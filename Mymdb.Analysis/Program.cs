@@ -9,6 +9,7 @@ namespace Mymdb.Analysis
 	class Program
 	{
 		public const bool COUNT_BLANK_LINES = false;
+		public const bool COUNT_COMMENTS = false;
 		public const bool USE_XAMARIN_FORMS = true;
 
 		static void Main(string[] args)
@@ -198,9 +199,13 @@ namespace Mymdb.Analysis
 				{
 					var lines = File.ReadAllLines(f.Path).ToList();
 
-					f.LinesOfCode = (COUNT_BLANK_LINES) 
-						? lines.Count 
-						: lines.Where(x => !string.IsNullOrWhiteSpace(x)).Count();
+					if(!COUNT_BLANK_LINES)
+						lines = lines.Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+
+					if(!COUNT_COMMENTS)
+						lines = lines.Where(x => !x.Trim().StartsWith("//")).ToList();
+
+					f.LinesOfCode = lines.Count;
 				}
 				catch (Exception ex)
 				{

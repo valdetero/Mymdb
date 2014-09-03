@@ -27,9 +27,11 @@ namespace Mymdb.UI
 		{
 			base.OnAppearing();
 
-			await viewModel.ExecuteLoadMoviesCommand();
-
-			listView.ItemsSource = viewModel.Movies;
+			if(viewModel == null || viewModel.Movies == null || viewModel.Movies.Count == 0) 
+			{
+				await viewModel.ExecuteLoadMoviesCommand();
+				listView.ItemsSource = viewModel.Movies;
+			}
 		}
 
 		protected async void OnItemSelected(object sender, ItemTappedEventArgs e)

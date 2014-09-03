@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -116,21 +116,12 @@
     <Reference Include="SQLite.Net.Platform.XamarinIOS">
       <HintPath>..\packages\SQLite.Net.Platform.XamarinIOS.2.3.0\lib\monotouch\SQLite.Net.Platform.XamarinIOS.dll</HintPath>
     </Reference>
-    <Reference Include="BTProgressHUD">
-      <HintPath>..\Components\btprogresshud-1.10\lib\ios\BTProgressHUD.dll</HintPath>
-    </Reference>
     <Reference Include="MonoTouch.Dialog-1" />
     <Reference Include="Mindscape.Raygun4Net.Xamarin.iOS">
       <HintPath>..\packages\Mindscape.Raygun4Net.3.2.0\lib\MonoTouch\Mindscape.Raygun4Net.Xamarin.iOS.dll</HintPath>
     </Reference>
     <Reference Include="GoogleAnalytics.iOS">
       <HintPath>..\Components\googleanalytics-3.0.7\lib\ios\GoogleAnalytics.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Analytics">
-      <HintPath>..\Components\Analytics-1.0.0\lib\ios\Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Components\Analytics-1.0.0\lib\ios\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Platform.iOS.dll</HintPath>
@@ -140,6 +131,25 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.1.0.55\lib\MonoTouch10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.InsightsCore">
+      <HintPath>..\packages\Xamarin.Insights.1.1.0.55\lib\MonoTouch10\Xamarin.InsightsCore.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\monotouch\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\monotouch\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Acr.XamForms.UserDialogs">
+      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.1\lib\MonoTouch\Acr.XamForms.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.XamForms.UserDialogs.iOS">
+      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.1\lib\MonoTouch\Acr.XamForms.UserDialogs.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +169,7 @@
     <Compile Include="Views\MovieViewController.designer.cs">
       <DependentUpon>MovieViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bootstrap\UserDialogsBootstrap.cs" />
   </ItemGroup>
   <Import Project="..\Mymdb.Shared\Mymdb.Shared.projitems" Label="Shared" Condition="Exists('..\Mymdb.Shared\Mymdb.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
@@ -178,16 +189,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <XamarinComponentReference Include="btprogresshud">
-      <Version>1.10</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="googleanalytics">
       <Version>3.0.7</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="Analytics">
-      <Version>1.0.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

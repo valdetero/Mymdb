@@ -29,7 +29,7 @@ namespace Mymdb.iOS
 			GAI.SharedInstance.DefaultTracker.Set(GAIConstants.ScreenName, "Movies View");
 			GAI.SharedInstance.DefaultTracker.Send(GAIDictionaryBuilder.CreateAppView().Build());
 
-			Segment.Analytics.Client.Screen(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), "Movies View");
+//			Segment.Analytics.Client.Screen(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), "Movies View");
 		}
 
 		public async override void ViewDidLoad()

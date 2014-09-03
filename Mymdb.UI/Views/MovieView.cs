@@ -17,10 +17,16 @@ namespace Mymdb.UI
 
 		public MovieView()
 		{
+			try{
 			viewModel = BindingContext as Core.ViewModels.MovieViewModel;
 
 			photo = new Image { WidthRequest = IMAGE_SIZE, HeightRequest = IMAGE_SIZE };
 			photo.SetBinding (Image.SourceProperty, "Photo");
+			photo.GestureRecognizers.Add(
+				new TapGestureRecognizer((view, args) => 
+				{
+					Xamarin.Insights.Report(new ArgumentNullException());
+				}){ NumberOfTapsRequired = 3 });
 
 			favoriteLabel = new Label { Text = "Favorite?" };
 
@@ -80,20 +86,33 @@ namespace Mymdb.UI
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Children = { movieTitle, headerView, buttonView }
 			};
+			}
+			catch(Exception ex) {
+				Xamarin.Insights.Report(ex);
+				Navigation.PopToRootAsync();
+			}
 		}
 
 		protected async override void OnBindingContextChanged()
 		{
-			base.OnBindingContextChanged();
+			try{			
+				base.OnBindingContextChanged();
 
-			var movie = (Core.ViewModels.MovieViewModel)BindingContext;
+				var movie = (Core.ViewModels.MovieViewModel)BindingContext;
 
-			await movie.Init(movie.Id);
-			viewModel = movie;
+				using(var handle = Xamarin.Insights.TrackTime("Loading movie")) 
+				{
+					await movie.Init(movie.Id);
+				}
+				viewModel = movie;
 
-			photo.Source = viewModel.Photo;
-			imdbLink.Text = viewModel.ImdbId;
-			webView.Source = string.Format("http://m.imdb.com/title/{0}", viewModel.ImdbId);
+				photo.Source = viewModel.Photo;
+				imdbLink.Text = viewModel.ImdbId;
+				webView.Source = string.Format("http://m.imdb.com/title/{0}", viewModel.ImdbId);
+			}
+			catch(Exception ex) {
+				Xamarin.Insights.Report(ex);
+			}
 		}
 	}
 }

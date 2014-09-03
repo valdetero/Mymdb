@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-//using System.Net.Http;
 
 using SQLite.Net.Async;
 using SQLite.Net.Interop;
@@ -18,6 +17,7 @@ namespace Mymdb
 		{
 			SQLiteAsyncConnection connection = null;
 			ISQLitePlatform platform = null;
+			Acr.XamForms.UserDialogs.IProgressDialog dialog;
 			string dbLocation = "MymdbDB.db3";
 
 			#if __IOS__
@@ -25,20 +25,26 @@ namespace Mymdb
 			var library = Path.Combine(docsPath, "../Library/");
 			dbLocation = Path.Combine(library, dbLocation);
 			platform = new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS();
+			dialog = new Acr.XamForms.UserDialogs.iOS.ProgressDialog(){ Title = "Loading..." };
 			#elif __ANDROID__
 			var library = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			dbLocation = Path.Combine(library, dbLocation);
 			platform = new SQLite.Net.Platform.XamarinAndroid.SQLitePlatformAndroid();
+			dialog = new Acr.XamForms.UserDialogs.Droid.ProgressDialog(){ Title = "Loading..." };
 			#elif WINDOWS_PHONE
 			platform = new SQLite.Net.Platform.WindowsPhone8.SQLitePlatformWP8();
 			dbLocation = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, dbLocation);
+			dialog = new Acr.XamForms.UserDialogs.WP8.ProgressDialog(){ Title = "Loading..." };
 			#elif WINDOWS_PHONE_APP
 			//no support for SQLite.Net yet
+			dialog = new ProgressIndicator();
 			#elif WINDOWS_APP
 			platform = new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT();
 			dbLocation = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, dbLocation);
+			dialog = new ProgressIndicator();
 			#else //desktop
 			platform = new SQLite.Net.Platform.Win32.SQLitePlatformWin32();
+			dialog = new ProgressIndicator();
 			#endif
 
 			var connectionFactory = new Func<SQLiteConnectionWithLock>(() => 
@@ -47,8 +53,7 @@ namespace Mymdb
 
 			IoC.ServiceContainer.Register<IStorageService>(() => new StorageService(connection));
 			IoC.ServiceContainer.Register<IMovieDatabaseService>(() => new MovieDatabaseService());
-			IoC.ServiceContainer.Register<IProgressIndicator>(() => new ProgressIndicator());
-
+			IoC.ServiceContainer.Register<Acr.XamForms.UserDialogs.IProgressDialog>(() => dialog);
 			IoC.ServiceContainer.Register<MoviesViewModel>();
 			IoC.ServiceContainer.Register<MovieViewModel>();
 		}

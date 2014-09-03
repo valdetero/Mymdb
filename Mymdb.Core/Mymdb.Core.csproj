@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Interfaces\IProgressIndicator.cs" />
     <Compile Include="DataLayer\LocalDatabase.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Interfaces\IStorageService.cs" />
@@ -85,6 +84,9 @@
     </Reference>
     <Reference Include="Acr.XamForms">
       <HintPath>..\packages\Acr.XamForms.1.2.0\lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\Acr.XamForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.XamForms.UserDialogs">
+      <HintPath>..\packages\Acr.XamForms.UserDialogs.2.0.1\lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\Acr.XamForms.UserDialogs.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
