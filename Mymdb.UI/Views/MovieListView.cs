@@ -29,7 +29,10 @@ namespace Mymdb.UI
 
 			if(viewModel == null || viewModel.Movies == null || viewModel.Movies.Count == 0) 
 			{
-				await viewModel.ExecuteLoadMoviesCommand();
+                using (var handle = Xamarin.Insights.TrackTime("Loading movie list"))
+                {
+                    await viewModel.ExecuteLoadMoviesCommand();
+                }
 				listView.ItemsSource = viewModel.Movies;
 			}
 		}

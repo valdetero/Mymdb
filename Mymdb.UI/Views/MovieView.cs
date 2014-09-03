@@ -26,7 +26,7 @@ namespace Mymdb.UI
 				new TapGestureRecognizer((view, args) => 
 				{
 					Xamarin.Insights.Report(new ArgumentNullException());
-				}){ NumberOfTapsRequired = 3 });
+				}));
 
 			favoriteLabel = new Label { Text = "Favorite?" };
 

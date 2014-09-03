@@ -199,6 +199,19 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\WP80\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Insights, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Insights.1.1.0.55\lib\WP80\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.InsightsCore, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Insights.1.1.0.55\lib\WP80\Xamarin.InsightsCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="SQLite.WP80, Version=3.8.6">
+      <Name>SQLite for Windows Phone</Name>
+    </SDKReference>
   </ItemGroup>
   <Import Project="..\Mymdb.Shared\Mymdb.Shared.projitems" Label="Shared" Condition="Exists('..\Mymdb.Shared\Mymdb.Shared.projitems')" />
   <Import Project="..\Mymdb.Shared\Mymdb.Shared.projitems" Label="Shared" Condition="Exists('..\Mymdb.Shared\Mymdb.Shared.projitems')" />
