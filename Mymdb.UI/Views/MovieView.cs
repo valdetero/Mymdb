@@ -18,74 +18,75 @@ namespace Mymdb.UI
 		public MovieView()
 		{
 			try{
-			viewModel = BindingContext as Core.ViewModels.MovieViewModel;
+			    viewModel = BindingContext as Core.ViewModels.MovieViewModel;
 
-			photo = new Image { WidthRequest = IMAGE_SIZE, HeightRequest = IMAGE_SIZE };
-			photo.SetBinding (Image.SourceProperty, "Photo");
-			photo.GestureRecognizers.Add(
-				new TapGestureRecognizer((view, args) => 
-				{
-					Xamarin.Insights.Report(new ArgumentNullException());
-				}));
+			    photo = new Image { WidthRequest = IMAGE_SIZE, HeightRequest = IMAGE_SIZE };
+			    photo.SetBinding (Image.SourceProperty, "Photo");
+                photo.GestureRecognizers.Add(new TapGestureRecognizer()
+                {
+                    Command = new Command(() => Xamarin.Insights.Report(new ArgumentException())),
+                    NumberOfTapsRequired = 2
+                });
 
-			favoriteLabel = new Label { Text = "Favorite?" };
+			    favoriteLabel = new Label { Text = "Favorite?" };
 
-			favoriteSwitch = new Switch ();
-			favoriteSwitch.SetBinding<Core.ViewModels.MovieViewModel>(Switch.IsToggledProperty, x => x.IsFavorite);
+			    favoriteSwitch = new Switch ();
+			    favoriteSwitch.SetBinding<Core.ViewModels.MovieViewModel>(Switch.IsToggledProperty, x => x.IsFavorite);
 
-			webView = new WebView();
-			imdbLink = new ExtendedLabel();
-			imdbLink.IsUnderline = true;
-			imdbLink.TextColor = Color.Blue;
-			imdbLink.GestureRecognizers.Add(
-				new TapGestureRecognizer((view, args) => 
-					Navigation.PushAsync(new ContentPage { Content = webView })));
+			    webView = new WebView();
+			    imdbLink = new ExtendedLabel();
+			    imdbLink.IsUnderline = true;
+			    imdbLink.TextColor = Color.Blue;
+                imdbLink.GestureRecognizers.Add(new TapGestureRecognizer()
+                {
+                    Command = new Command(() => Navigation.PushAsync(new ContentPage { Content = webView })
+                )});
 
-			var optionsView = new StackLayout { 
-				VerticalOptions = LayoutOptions.StartAndExpand,
-				Orientation = StackOrientation.Vertical,
-				Children = { favoriteLabel, favoriteSwitch, imdbLink }
-			};
+			    var optionsView = new StackLayout { 
+				    VerticalOptions = LayoutOptions.StartAndExpand,
+				    Orientation = StackOrientation.Vertical,
+				    Children = { favoriteLabel, favoriteSwitch, imdbLink }
+			    };
 
-			var headerView = new StackLayout {
-				Padding = new Thickness (5, 20, 5, 0),
-				HorizontalOptions = LayoutOptions.StartAndExpand,
-				Orientation = StackOrientation.Horizontal,
-				Children = { photo, optionsView }
-			};
+			    var headerView = new StackLayout {
+				    Padding = new Thickness (5, 20, 5, 0),
+				    HorizontalOptions = LayoutOptions.StartAndExpand,
+				    Orientation = StackOrientation.Horizontal,
+				    Children = { photo, optionsView }
+			    };
 
-			movieTitle = new Label {
-				XAlign = TextAlignment.Center,
-				Font = Font.SystemFontOfSize(NamedSize.Large),
-				IsVisible = Device.OS == TargetPlatform.WinPhone
-			};
+			    movieTitle = new Label {
+				    XAlign = TextAlignment.Center,
+				    Font = Font.SystemFontOfSize(NamedSize.Large),
+				    IsVisible = Device.OS == TargetPlatform.WinPhone
+			    };
 
-			var save = new Button {
-				Text = "Save",
-			};
-			save.Clicked += (sender, e) => {
-				viewModel.ExecuteSaveMovieCommand();
-				Navigation.PopToRootAsync();
-			};
+			    var save = new Button {
+				    Text = "Save",
+			    };
+			    save.Clicked += async (sender, e) => {
+				    await viewModel.ExecuteSaveMovieCommand();
+				    await Navigation.PopToRootAsync();
+			    };
 
-			var delete = new Button {
-				Text = "Delete",
-				TextColor = Color.Red
-			};
-			delete.Clicked += (sender, e) => {
-				viewModel.ExecuteDeleteMovieCommand(viewModel.Id);
-				Navigation.PopToRootAsync();
-			};
+			    var delete = new Button {
+				    Text = "Delete",
+				    TextColor = Color.Red
+			    };
+			    delete.Clicked += async (sender, e) => {
+				    await viewModel.ExecuteDeleteMovieCommand(viewModel.Id);
+				    await Navigation.PopToRootAsync();
+			    };
 
-			var buttonView = new StackLayout {
-				Orientation = StackOrientation.Vertical,
-				Children = { save, delete }
-			};
+			    var buttonView = new StackLayout {
+				    Orientation = StackOrientation.Vertical,
+				    Children = { save, delete }
+			    };
 
-			Content = new StackLayout {
-				VerticalOptions = LayoutOptions.StartAndExpand,
-				Children = { movieTitle, headerView, buttonView }
-			};
+			    Content = new StackLayout {
+				    VerticalOptions = LayoutOptions.StartAndExpand,
+				    Children = { movieTitle, headerView, buttonView }
+			    };
 			}
 			catch(Exception ex) {
 				Xamarin.Insights.Report(ex);
