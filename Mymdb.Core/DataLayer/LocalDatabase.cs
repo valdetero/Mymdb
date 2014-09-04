@@ -21,7 +21,7 @@ namespace Mymdb.Core.DataLayer
 			database.CreateTableAsync<Movie>();
 		}
 
-		public Task<List<T>> GetItems<T>() where T : IBusinessEntity, new()
+		public Task<List<T>> GetItems<T>() where T : class, IBusinessEntity, new()
 		{
 			using (locker.Lock())
 			{
@@ -29,15 +29,17 @@ namespace Mymdb.Core.DataLayer
 			}
 		}
 
-		public Task<T> GetItem<T>(int id) where T : IBusinessEntity, new()
+		public Task<T> GetItem<T>(int id) where T : class, IBusinessEntity, new()
 		{
 			using (locker.Lock())
 			{
-				return database.Table<T>().Where(x => x.Id == id).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+				return database.Table<T>().Where(x => x.Id == id)
+                    //.OrderByDescending(x => x.Id)
+                    .FirstOrDefaultAsync();
 			}
 		}
 
-		public async Task<int> SaveItem<T>(T item) where T : IBusinessEntity, new()
+		public async Task<int> SaveItem<T>(T item) where T : class, IBusinessEntity, new()
 		{
 			var exists = await database.Table<T>().Where(x => x.Id == item.Id).FirstOrDefaultAsync();
 
@@ -55,7 +57,7 @@ namespace Mymdb.Core.DataLayer
 			}
 		}
 
-		public Task<int> DeleteItem<T>(int id) where T : IBusinessEntity, new()
+		public Task<int> DeleteItem<T>(int id) where T : class, IBusinessEntity, new()
 		{
 			using (locker.Lock())
 			{
