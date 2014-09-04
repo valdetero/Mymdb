@@ -24,12 +24,12 @@ namespace Mymdb.UI
 			    photo.SetBinding (Image.SourceProperty, "Photo");
                 photo.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
-                    Command = new Command(() => Xamarin.Insights.Report(new ArgumentException())),
+                    Command = new Command(() => Xamarin.Insights.Report(new ArgumentException("Tapping twice is not allowed."), Xamarin.ReportSeverity.Warning)),
                     NumberOfTapsRequired = 2
                 });
 				photo.GestureRecognizers.Add(new TapGestureRecognizer()
 				{
-					Command = new Command(() => { throw new ArgumentException(); }),
+					Command = new Command(() => { throw new ArgumentOutOfRangeException("hams", "Three hams will surely kill him."); }),
 					NumberOfTapsRequired = 3
 				});
 
@@ -117,7 +117,7 @@ namespace Mymdb.UI
 				webView.Source = string.Format("http://m.imdb.com/title/{0}", viewModel.ImdbId);
 			}
 			catch(Exception ex) {
-				Xamarin.Insights.Report(ex);
+				Xamarin.Insights.Report(ex, Xamarin.ReportSeverity.Error);
 			}
 		}
 	}

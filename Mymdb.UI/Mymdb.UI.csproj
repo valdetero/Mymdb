@@ -54,23 +54,14 @@
     <Reference Include="Acr.XamForms">
       <HintPath>..\packages\Acr.XamForms.1.2.0\lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\Acr.XamForms.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.1.0.55\lib\portable-win+net40+wp80+MonoAndroid10+MonoTouch10\Xamarin.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.InsightsCore">
-      <HintPath>..\packages\Xamarin.Insights.1.1.0.55\lib\portable-win+net40+wp80+MonoAndroid10+MonoTouch10\Xamarin.InsightsCore.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Compression">
       <HintPath>..\packages\Microsoft.Bcl.Compression.3.9.83\lib\portable-net45+win8+wp8+wpa81\System.IO.Compression.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.2.0.57\lib\portable-win+net40+wp80+MonoAndroid10+MonoTouch10\Xamarin.Insights.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    <Reference Include="Xamarin.InsightsCore">
+      <HintPath>..\packages\Xamarin.Insights.1.2.0.57\lib\portable-win+net40+wp80+MonoAndroid10+MonoTouch10\Xamarin.InsightsCore.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

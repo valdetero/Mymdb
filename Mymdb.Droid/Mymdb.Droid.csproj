@@ -88,10 +88,10 @@
       <HintPath>..\packages\Mindscape.Raygun4Net.3.2.0\lib\MonoAndroid2.2\Mindscape.Raygun4Net.Xamarin.Android.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.1.0.55\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Insights.1.2.0.57\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.InsightsCore">
-      <HintPath>..\packages\Xamarin.Insights.1.1.0.55\lib\MonoAndroid10\Xamarin.InsightsCore.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Insights.1.2.0.57\lib\MonoAndroid10\Xamarin.InsightsCore.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
