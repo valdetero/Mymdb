@@ -27,6 +27,11 @@ namespace Mymdb.UI
                     Command = new Command(() => Xamarin.Insights.Report(new ArgumentException())),
                     NumberOfTapsRequired = 2
                 });
+				photo.GestureRecognizers.Add(new TapGestureRecognizer()
+				{
+					Command = new Command(() => { throw new ArgumentException(); }),
+					NumberOfTapsRequired = 3
+				});
 
 			    favoriteLabel = new Label { Text = "Favorite?" };
 

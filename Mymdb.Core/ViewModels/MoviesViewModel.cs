@@ -91,6 +91,8 @@ namespace Mymdb.Core.ViewModels
 						movieToAdd = movie;
 
 					await addMovie(movieToAdd);
+
+					movieToAdd = null;
 				}
 
 				//add any remaining local movies
