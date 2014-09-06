@@ -23,8 +23,6 @@ namespace Mymdb.WP
             // Sample code to localize the ApplicationBar
             Forms.Init();
             ServiceRegistrar.Init();
-            Xamarin.Insights.Initialize(Mymdb.Core.Constants.Insights.ApiKey);
-
             Content = UI.App.GetMainPage().ConvertPageToUIElement(this);
         }
 

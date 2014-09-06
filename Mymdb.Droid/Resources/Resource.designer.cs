@@ -68,8 +68,6 @@ namespace Mymdb.Droid
 			global::Acr.XamForms.UserDialogs.Droid.Resource.Styleable.ProgressWheel_ahTextColor = global::Mymdb.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::Acr.XamForms.UserDialogs.Droid.Resource.Styleable.ProgressWheel_ahTextSize = global::Mymdb.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
 			global::Mindscape.Raygun4Net.Xamarin.Android.Resource.String.library_name = global::Mymdb.Droid.Resource.String.library_name;
-			global::Xamarin.InsightsCore.Resource.String.ApplicationName = global::Mymdb.Droid.Resource.String.ApplicationName;
-			global::Xamarin.InsightsCore.Resource.String.Hello = global::Mymdb.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

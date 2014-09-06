@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Xamarin.Forms;
+using Xamarin.Forms.Platform.WinRT;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,8 +27,9 @@ namespace Mymdb.RT
         {
             this.InitializeComponent();
 
-            //Xamarin.Forms.Forms.Init();
-            //Content = UI.App.GetMainPage().ConvertPageToUIElement(this);
+            Forms.Init();
+            ServiceRegistrar.Init();
+            Content = UI.App.GetMainPage().ConvertPageToUIElement(this);
         }
     }
 }

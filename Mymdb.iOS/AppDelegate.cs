@@ -59,9 +59,6 @@ namespace Mymdb.iOS
 			Tracker = GAI.SharedInstance.GetTracker(Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
 
 //			Segment.Analytics.Initialize(Mymdb.Core.Constants.SegmentIO.ApiKey);
-
-			Xamarin.Insights.Initialize(Mymdb.Core.Constants.Insights.ApiKey);
-			Xamarin.Insights.Identify(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), "", "");
 		}
 	}
 }

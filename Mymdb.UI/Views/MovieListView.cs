@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Mymdb.Core.ViewModels;
 using Xamarin.Forms;
 
 namespace Mymdb.UI
@@ -7,7 +8,7 @@ namespace Mymdb.UI
 	public class MovieListView : ContentPage
 	{
 		private ListView listView;
-		private Core.ViewModels.MoviesViewModel viewModel;
+		private MoviesViewModel viewModel;
 
 		public MovieListView()
 		{
@@ -20,7 +21,7 @@ namespace Mymdb.UI
 			Content = listView;
 			Title = "Movies";
 
-			viewModel = IoC.ServiceContainer.Resolve<Core.ViewModels.MoviesViewModel>();
+			viewModel = IoC.ServiceContainer.Resolve<MoviesViewModel>();
 		}
 
 		protected async override void OnAppearing()
@@ -29,17 +30,14 @@ namespace Mymdb.UI
 
 			if(viewModel == null || viewModel.Movies == null || viewModel.Movies.Count == 0) 
 			{
-                using (var handle = Xamarin.Insights.TrackTime("Loading movie list"))
-                {
-                    await viewModel.ExecuteLoadMoviesCommand();
-                }
+                await viewModel.ExecuteLoadMoviesCommand();
 				listView.ItemsSource = viewModel.Movies;
 			}
 		}
 
 		protected async void OnItemSelected(object sender, ItemTappedEventArgs e)
 		{
-			var item = e.Item as Core.ViewModels.MovieViewModel;
+			var item = e.Item as MovieViewModel;
 
 			var selectedMovie = new MovieView 
 			{ 
