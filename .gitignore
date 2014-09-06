@@ -30,5 +30,6 @@ packages/*
 
 *.suo
 *.user
-ARCHIVE/*
 *.sln.ide/*
+*.userprefs
+ARCHIVE/*
