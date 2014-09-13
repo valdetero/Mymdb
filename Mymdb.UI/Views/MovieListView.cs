@@ -33,6 +33,7 @@ namespace Mymdb.UI
                 await viewModel.ExecuteLoadMoviesCommand();
 				listView.ItemsSource = viewModel.Movies;
 			}
+			listView.SelectedItem = null;
 		}
 
 		protected async void OnItemSelected(object sender, ItemTappedEventArgs e)
