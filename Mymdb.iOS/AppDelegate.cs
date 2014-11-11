@@ -51,6 +51,8 @@ namespace Mymdb.iOS
 		{
 			// Initialize tracker.
 			Tracker = GAI.SharedInstance.GetTracker(Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
+
+            Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey);
         }
 	}
 }

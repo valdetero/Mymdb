@@ -19,6 +19,8 @@ namespace Mymdb.Droid.Views
         {
             base.OnCreate(bundle);
 
+            Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey, this);
+
             Xamarin.Forms.Forms.Init(this, bundle);
 
             IoC.ServiceContainer.Register<Xamarin.Forms.Platform.Android.AndroidActivity>(() => this);

@@ -15,8 +15,6 @@ namespace Mymdb
     {
         public static void Init()
 		{
-            Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey);
-
             SQLiteAsyncConnection connection = null;
 			ISQLitePlatform platform = null;
 			Acr.XamForms.UserDialogs.IProgressDialog dialog;

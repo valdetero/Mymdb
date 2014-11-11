@@ -27,6 +27,8 @@ namespace Mymdb.RT
         {
             this.InitializeComponent();
 
+            Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey);
+
             Forms.Init();
             ServiceRegistrar.Init();
             Content = UI.App.GetMainPage().ConvertPageToUIElement(this);
