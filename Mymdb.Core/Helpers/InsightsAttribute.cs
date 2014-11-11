@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using System.Collections.Generic;
-//using MethodDecoratorInterfaces;
 using Xamarin;
 
 namespace Mymdb.Core.Helpers
@@ -11,7 +10,7 @@ namespace Mymdb.Core.Helpers
             | AttributeTargets.Constructor
             | AttributeTargets.Assembly
             | AttributeTargets.Module)]
-    public class InsightsAttribute : Attribute//, IMethodDecorator
+    public class InsightsAttribute : Attribute, IMethodDecorator
     {
         private string _methodName;
 

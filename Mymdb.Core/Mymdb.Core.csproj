@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\InsightsAttribute.cs" />
+    <Compile Include="Interfaces\IMethodDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataLayer\LocalDatabase.cs" />
     <Compile Include="Services\StorageService.cs" />
