@@ -20,8 +20,13 @@ namespace Mymdb.UI
 		{
 			photo = new Image { WidthRequest = IMAGE_SIZE, HeightRequest = IMAGE_SIZE };
 			photo.SetBinding (Image.SourceProperty, "Photo");
+            photo.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command(() => { throw new ArgumentOutOfRangeException("Too many taps"); }),
+                NumberOfTapsRequired = 3
+            });
 
-			favoriteLabel = new Label { Text = "Favorite?" };
+            favoriteLabel = new Label { Text = "Favorite?" };
 
 			favoriteSwitch = new Switch ();
 			favoriteSwitch.SetBinding(Switch.IsToggledProperty, "IsFavorite");
@@ -32,8 +37,8 @@ namespace Mymdb.UI
 			imdbLink.TextColor = Color.Blue;
             imdbLink.GestureRecognizers.Add(new TapGestureRecognizer()
             {
-                Command = new Command(() => Navigation.PushAsync(new ContentPage { Content = webView })
-            )});
+                Command = new Command(() => Navigation.PushAsync(new ContentPage { Content = webView }))
+            });
 
 			var optionsView = new StackLayout { 
 				VerticalOptions = LayoutOptions.StartAndExpand,
@@ -71,9 +76,18 @@ namespace Mymdb.UI
                 await Navigation.PopAsync();
             };
 
+            var bad = new Button
+            {
+                Text = "Throw Exception",
+                TextColor = Color.Lime
+            };
+            bad.Clicked += (s, e) => {
+                throw new NotImplementedException("Bad button");
+            };
+
 			var buttonView = new StackLayout {
 				Orientation = StackOrientation.Vertical,
-				Children = { save, delete }
+				Children = { save, delete, bad }
 			};
 
 			Content = new StackLayout {

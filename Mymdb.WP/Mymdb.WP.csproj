@@ -205,7 +205,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="SQLite.WP80, Version=3.8.6">
+    <SDKReference Include="SQLite.WP80, Version=3.8.7.1">
       <Name>SQLite for Windows Phone</Name>
     </SDKReference>
   </ItemGroup>

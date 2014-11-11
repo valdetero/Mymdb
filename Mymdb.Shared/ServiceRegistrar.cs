@@ -55,7 +55,7 @@ namespace Mymdb
 			IoC.ServiceContainer.Register<IMovieDatabaseService>(() => new MovieDatabaseService());
 			IoC.ServiceContainer.Register<Acr.XamForms.UserDialogs.IProgressDialog>(() => dialog);
 			IoC.ServiceContainer.Register<MoviesViewModel>();
-			IoC.ServiceContainer.Register<MovieViewModel>();
+			IoC.ServiceContainer.Register<MovieViewModel>();            
 		}
     }
 }

@@ -2,6 +2,10 @@
 using System.Reflection;
 using System.Collections.Generic;
 using Xamarin;
+using Mymdb.Core.Helpers;
+using MethodDecoratorInterfaces;
+
+[module: Insights]
 
 namespace Mymdb.Core.Helpers
 {
@@ -16,7 +20,8 @@ namespace Mymdb.Core.Helpers
 
         public void Init(object instance, MethodBase method, object[] args)
         {
-            _methodName = method.DeclaringType.FullName + "." + method.Name;
+            _methodName = //method.DeclaringType.FullName + "." + 
+                method.Name;
         }
 
         public void OnEntry()

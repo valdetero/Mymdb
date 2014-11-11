@@ -10,6 +10,7 @@ using Mymdb.Interfaces;
 using Mymdb.Model;
 using Mymdb.Core.Helpers;
 
+using Xamarin;
 using Xamarin.Forms;
 using Acr.XamForms;
 using Acr.XamForms.UserDialogs;
@@ -64,9 +65,12 @@ namespace Mymdb.Core.ViewModels
 			try
 			{
 				var movies = await movieService.GetMoviesNowPlaying();
-				var savedMovies = await storageService.GetMovies();
+                Insights.Track(string.Format("Retrieved {0} movies", movies.Count));
 
-				Movie movieToAdd = null;
+                var savedMovies = await storageService.GetMovies();
+                Insights.Track(string.Format("Retrieved {0} movies locally", savedMovies.Count));
+
+                Movie movieToAdd = null;
 				foreach (var movie in movies)
 				{
 					if(savedMovies != null)
@@ -103,10 +107,13 @@ namespace Mymdb.Core.ViewModels
 				{
 					await addMovie(movie);
 				}
-			}
+
+                Insights.Track(string.Format("Displaying {0} movies", Movies.Count));
+            }
 			catch (Exception ex)
 			{
-				Debug.WriteLine("Unable to load movies: " + ex.Message);
+                Insights.Report(ex, ReportSeverity.Error);
+                Debug.WriteLine("Unable to load movies: " + ex.Message);
 			}
 			finally
 			{
@@ -141,7 +148,8 @@ namespace Mymdb.Core.ViewModels
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine("Unable to create image url: " + ex.Message);
+                Insights.Report(ex);
+                Debug.WriteLine("Unable to create image url: " + ex.Message);
 			}
 			finally
 			{
@@ -170,7 +178,8 @@ namespace Mymdb.Core.ViewModels
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine("Unable to download image: " + ex.Message);
+                Insights.Report(ex);
+                Debug.WriteLine("Unable to download image: " + ex.Message);
 			}
 			finally
 			{

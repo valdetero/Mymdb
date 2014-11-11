@@ -50,9 +50,14 @@ namespace Mymdb.iOS
 		private void InitAnalytics()
 		{
 			// Initialize tracker.
-			Tracker = GAI.SharedInstance.GetTracker(Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
+			//Tracker = GAI.SharedInstance.GetTracker(Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
 
             Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey);
+            Xamarin.Insights.Identify(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), new Dictionary<string,string>());
+            Xamarin.Insights.ForceDataTransmission = true;
+            Xamarin.Insights.DisableCollection = false;
+            Xamarin.Insights.DisableDataTransmission = false;
+            Xamarin.Insights.DisableExceptionCatching = false; 
         }
 	}
 }

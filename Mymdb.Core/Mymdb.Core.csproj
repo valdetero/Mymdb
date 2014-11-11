@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\InsightsAttribute.cs" />
-    <Compile Include="Interfaces\IMethodDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataLayer\LocalDatabase.cs" />
     <Compile Include="Services\StorageService.cs" />
@@ -58,6 +57,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MethodDecoratorEx.Fody">
+      <HintPath>..\packages\MethodDecoratorEx.Fody.0.9.0.3\MethodDecoratorEx.Fody.dll</HintPath>
+    </Reference>
+    <Reference Include="MethodDecoratorInterfaces">
+      <HintPath>..\packages\MethodDecoratorEx.Fody.0.9.0.3\MethodDecoratorInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="SQLite.Net">
       <HintPath>..\packages\SQLite.Net-PCL.2.3.0\lib\portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
     </Reference>

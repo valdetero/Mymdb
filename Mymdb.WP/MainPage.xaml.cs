@@ -21,6 +21,15 @@ namespace Mymdb.WP
             InitializeComponent();
 
             Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey);
+            Xamarin.Insights.ForceDataTransmission = true;
+            Xamarin.Insights.DisableCollection = false;
+            Xamarin.Insights.DisableDataTransmission = false;
+            Xamarin.Insights.DisableExceptionCatching = false;
+
+            byte[] DeviceID = (byte[])Microsoft.Phone.Info.DeviceExtendedProperties.GetValue("DeviceUniqueId");
+            Xamarin.Insights.Identify(Convert.ToBase64String(DeviceID), new Dictionary<string, string>());
+
+
             Forms.Init();
             ServiceRegistrar.Init();
             Content = UI.App.GetMainPage().ConvertPageToUIElement(this);

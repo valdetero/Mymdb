@@ -6,6 +6,7 @@ using Mymdb.Interfaces;
 using Mymdb.Model;
 using Mymdb.Core.Services;
 using Mymdb.Core.Helpers;
+using Xamarin;
 using Xamarin.Forms;
 
 namespace Mymdb.Core.ViewModels
@@ -107,7 +108,9 @@ namespace Mymdb.Core.ViewModels
 			if (currentMovie == null)
 				currentMovie = new Movie();
 
-			currentMovie.Title = Title;
+            Insights.Track("Saving movie: " + Title);
+
+            currentMovie.Title = Title;
 			currentMovie.ImdbId = ImdbId;
 			currentMovie.Runtime = Runtime;
 			currentMovie.IsFavorite = IsFavorite;
@@ -122,6 +125,7 @@ namespace Mymdb.Core.ViewModels
 			}
 			catch (Exception ex)
 			{
+                Insights.Report(ex, ReportSeverity.Error);
 				Debug.WriteLine("Unable to save movie: " + ex.Message);
 			}
 			finally
@@ -143,13 +147,17 @@ namespace Mymdb.Core.ViewModels
 				return;
 
 			IsBusy = true;
-			try
+
+            Insights.Track("Deleting movie: " + Title);
+
+            try
 			{
 				await storageService.DeleteMovie(id);
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine("Unable to delete movie: " + ex.Message);
+                Insights.Report(ex, ReportSeverity.Error);
+                Debug.WriteLine("Unable to delete movie: " + ex.Message);
 			}
 			finally
 			{
