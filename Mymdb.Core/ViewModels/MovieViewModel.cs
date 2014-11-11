@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Mymdb.Interfaces;
 using Mymdb.Model;
 using Mymdb.Core.Services;
+using Mymdb.Core.Helpers;
 using Xamarin.Forms;
 
 namespace Mymdb.Core.ViewModels
@@ -97,6 +98,8 @@ namespace Mymdb.Core.ViewModels
 		{
 			get { return saveMovieCommand ?? (saveMovieCommand = new RelayCommand(async () => await ExecuteSaveMovieCommand())); }
 		}
+
+        [Insights]
 		public async Task ExecuteSaveMovieCommand()
 		{
 			if (IsBusy)
@@ -132,7 +135,9 @@ namespace Mymdb.Core.ViewModels
 		{
 			get { return deleteMovieCommand ?? (deleteMovieCommand = new RelayCommand<int>(async (id) => await ExecuteDeleteMovieCommand(id))); }
 		}
-		public async Task ExecuteDeleteMovieCommand(int id)
+
+        [Insights]
+        public async Task ExecuteDeleteMovieCommand(int id)
 		{
 			if (IsBusy)
 				return;

@@ -25,6 +25,11 @@ namespace Mymdb.Core
 		{
 			public const string ApiKey = "";
 		}
-	}
+
+        public struct Insights
+        {
+            public const string ApiKey = "";
+        }
+    }
 }
 

@@ -8,6 +8,7 @@ using System.Windows.Input;
 
 using Mymdb.Interfaces;
 using Mymdb.Model;
+using Mymdb.Core.Helpers;
 
 using Xamarin.Forms;
 using Acr.XamForms;
@@ -49,7 +50,9 @@ namespace Mymdb.Core.ViewModels
 		{
 			get { return loadMoviesCommand ?? (loadMoviesCommand = new RelayCommand<bool>(async (loadImages) => await ExecuteLoadMoviesCommand(loadImages))); }
 		}
-		public async Task ExecuteLoadMoviesCommand(bool loadImages = false)
+
+        [Insights]
+        public async Task ExecuteLoadMoviesCommand(bool loadImages = false)
 		{
 			if (IsBusy)
 				return;
@@ -124,7 +127,9 @@ namespace Mymdb.Core.ViewModels
 		{
 			get { return getImageCommand ?? (getImageCommand = new RelayCommand<string>((item) => ExecuteGetImageCommand(item))); }
 		}
-		public string ExecuteGetImageCommand(string path)
+
+        [Insights]
+        public string ExecuteGetImageCommand(string path)
 		{
 			if (IsBusy)
 				return string.Empty;
@@ -150,7 +155,9 @@ namespace Mymdb.Core.ViewModels
 		{
 			get { return downloadImageCommand ?? (downloadImageCommand = new RelayCommand<string>((item) => ExecuteDownloadImageCommand(item))); }
 		}
-		public Task<byte[]> ExecuteDownloadImageCommand(string path)
+
+        [Insights]
+        public Task<byte[]> ExecuteDownloadImageCommand(string path)
 		{
 			if (IsBusy)
 				return null;

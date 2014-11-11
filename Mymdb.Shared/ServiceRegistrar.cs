@@ -15,7 +15,9 @@ namespace Mymdb
     {
         public static void Init()
 		{
-			SQLiteAsyncConnection connection = null;
+            Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey);
+
+            SQLiteAsyncConnection connection = null;
 			ISQLitePlatform platform = null;
 			Acr.XamForms.UserDialogs.IProgressDialog dialog;
 			string dbLocation = "MymdbDB.db3";
@@ -57,6 +59,6 @@ namespace Mymdb
 			IoC.ServiceContainer.Register<MoviesViewModel>();
 			IoC.ServiceContainer.Register<MovieViewModel>();
 		}
-	}
+    }
 }
 

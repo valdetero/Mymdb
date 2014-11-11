@@ -33,9 +33,9 @@ namespace Mymdb.iOS
 		//
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			Forms.Init();
+            InitAnalytics();
+            Forms.Init();
 			ServiceRegistrar.Init();
-			InitAnalytics();
 
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
 //			window.RootViewController = new UINavigationController(new MoviesViewController());
@@ -49,16 +49,8 @@ namespace Mymdb.iOS
 
 		private void InitAnalytics()
 		{
-			// Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-			GAI.SharedInstance.DispatchInterval = 20;
-
-			// Optional: automatically send uncaught exceptions to Google Analytics.
-			GAI.SharedInstance.TrackUncaughtExceptions = true;
-
 			// Initialize tracker.
 			Tracker = GAI.SharedInstance.GetTracker(Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
-
-//			Segment.Analytics.Initialize(Mymdb.Core.Constants.SegmentIO.ApiKey);
-		}
+        }
 	}
 }
