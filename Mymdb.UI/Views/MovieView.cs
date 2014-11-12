@@ -23,7 +23,7 @@ namespace Mymdb.UI
             photo.GestureRecognizers.Add(new TapGestureRecognizer()
             {
                 Command = new Command(() => { throw new ArgumentOutOfRangeException("Too many taps"); }),
-                NumberOfTapsRequired = 3
+                NumberOfTapsRequired = 1
             });
 
             favoriteLabel = new Label { Text = "Favorite?" };
