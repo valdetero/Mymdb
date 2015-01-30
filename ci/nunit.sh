@@ -1,9 +1,11 @@
 #!/bin/sh -x
 
-mono --runtime=v4.0 .nuget/NuGet.exe install NUnit.Runners -Version 2.6.1 -o packages
+NUNIT=2.6.3
+
+mono --runtime=v4.0 .nuget/NuGet.exe install NUnit.Runners -Version $NUNIT -o packages
 
 runTest(){
-    mono --runtime=v4.0 packages/NUnit.Runners.2.6.1/tools/nunit-console.exe -noxml -nodots -labels -stoponerror $@
+    mono --runtime=v4.0 packages/NUnit.Runners.${NUNIT}/tools/nunit-console.exe -noxml -nodots -labels -stoponerror $@
    if [ $? -ne 0 ]
    then   
      exit 1
