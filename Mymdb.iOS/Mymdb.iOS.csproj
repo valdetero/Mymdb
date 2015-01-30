@@ -186,7 +186,6 @@
     <Compile Include="Views\MovieViewController.designer.cs">
       <DependentUpon>MovieViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bootstrap\UserDialogsBootstrap.cs" />
   </ItemGroup>
   <Import Project="..\Mymdb.Shared\Mymdb.Shared.projitems" Label="Shared" Condition="Exists('..\Mymdb.Shared\Mymdb.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
