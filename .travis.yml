@@ -1,4 +1,4 @@
-language: objective-c
+language: csharp
 
 env:
  global:
@@ -12,5 +12,5 @@ before_install:
  - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
 
 script:
- - xbuild Mymdb.iOS/Mymdb.iOS.csproj
+ - xbuild Mymdb.sln
 # - .ci/nunit.sh Mymdb.iOS.Test/bin/Debug/Tests.dll
