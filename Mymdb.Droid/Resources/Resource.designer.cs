@@ -339,8 +339,12 @@ namespace Mymdb.Droid
 		public partial class Styleable
 		{
 			
+<<<<<<< HEAD
 			public static int[] ProgressWheel = new int[]
 			{
+=======
+			public static int[] ProgressWheel = new int[] {
+>>>>>>> FETCH_HEAD
 					2130771968,
 					2130771969,
 					2130771970,

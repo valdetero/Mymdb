@@ -23,14 +23,27 @@ namespace Mymdb.Droid.Views
             base.OnCreate(bundle);
 
             Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey, this);
+            Xamarin.Insights.Identify(getDeviceId(), new Dictionary<string, string>());
             Xamarin.Insights.ForceDataTransmission = true;
-                
+            Xamarin.Insights.DisableCollection = false;
+            Xamarin.Insights.DisableDataTransmission = false;
+            Xamarin.Insights.DisableExceptionCatching = false;
+
             Xamarin.Forms.Forms.Init(this, bundle);
 
 			IoC.ServiceContainer.Register<Xamarin.Forms.Platform.Android.FormsApplicationActivity>(() => this);
             ServiceRegistrar.Init();
 
 			LoadApplication(new App());
+        }
+
+        private string getDeviceId()
+        {
+            var service = GetSystemService(Context.TelephonyService);
+            var mgr = (Android.Telephony.TelephonyManager)service;
+            var device = mgr.DeviceId;
+
+            return device;
         }
     }
 }

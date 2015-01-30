@@ -95,7 +95,7 @@
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:id="@+id/imageView1"
-        android:layout_width="210.3dp"
+        android:layout_width="match_parent"
         android:layout_height="99.9dp" />
     <LinearLayout
         android:orientation="horizontal"
