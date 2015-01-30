@@ -65,10 +65,11 @@ namespace Mymdb.Core.ViewModels
 			try
 			{
 				var movies = await movieService.GetMoviesNowPlaying();
-                Insights.Track(string.Format("Retrieved {0} movies", movies.Count));
 
-                var savedMovies = await storageService.GetMovies();
-                Insights.Track(string.Format("Retrieved {0} movies locally", savedMovies.Count));
+				Insights.Track(string.Format("Retrieved {0} movies", movies.Count));
+
+				var savedMovies = await storageService.GetMovies();
+				Insights.Track(string.Format("Retrieved {0} movies locally", savedMovies.Count));
 
                 Movie movieToAdd = null;
 				foreach (var movie in movies)
@@ -110,6 +111,7 @@ namespace Mymdb.Core.ViewModels
 
                 Insights.Track(string.Format("Displaying {0} movies", Movies.Count));
             }
+
 			catch (Exception ex)
 			{
                 Insights.Report(ex, ReportSeverity.Error);

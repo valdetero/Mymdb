@@ -3,13 +3,13 @@ using Xamarin.Forms;
 
 namespace Mymdb.UI
 {
-	public static class App
+	public class App : Application
 	{
-		public static Page GetMainPage ()
+		public App()
 		{
 			var movieList = new MovieListView ();
 
-			return new NavigationPage (movieList);
+			MainPage = new NavigationPage (movieList);
 		}
 	}
 }

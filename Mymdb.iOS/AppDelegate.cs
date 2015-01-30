@@ -1,15 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
+using MonoTouch.NUnit.UI;
 
 using GoogleAnalytics.iOS;
 
 using Mymdb.UI;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 namespace Mymdb.iOS
 {
@@ -17,10 +19,10 @@ namespace Mymdb.iOS
 	// User Interface of the application, as well as listening (and optionally responding) to
 	// application events from iOS.
 	[Register("AppDelegate")]
-	public partial class AppDelegate : UIApplicationDelegate
+	public partial class AppDelegate : FormsApplicationDelegate
 	{
 		// class-level declarations
-		UIWindow window;
+//		UIWindow window;
 		public static UIStoryboard Storyboard = UIStoryboard.FromName("Movie", null);
 		public IGAITracker Tracker;
 
@@ -35,22 +37,22 @@ namespace Mymdb.iOS
 		{
             InitAnalytics();
             Forms.Init();
+#if DEBUG
+			Xamarin.Calabash.Start();
+#endif
+
+			Forms.Init();
 			ServiceRegistrar.Init();
 
-			window = new UIWindow(UIScreen.MainScreen.Bounds);
-//			window.RootViewController = new UINavigationController(new MoviesViewController());
-			window.RootViewController = App.GetMainPage().CreateViewController();
-			
-			// make the window visible
-			window.MakeKeyAndVisible();
-			
-			return true;
+			LoadApplication(new App());
+
+			return base.FinishedLaunching(app, options);
 		}
 
 		private void InitAnalytics()
 		{
 			// Initialize tracker.
-			//Tracker = GAI.SharedInstance.GetTracker(Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
+			Tracker = GAI.SharedInstance.GetTracker(Mymdb.Core.Constants.GoogleAnalytics.ApiKey);
 
             Xamarin.Insights.Initialize(Core.Constants.Insights.ApiKey);
             Xamarin.Insights.Identify(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), new Dictionary<string,string>());
@@ -58,6 +60,8 @@ namespace Mymdb.iOS
             Xamarin.Insights.DisableCollection = false;
             Xamarin.Insights.DisableDataTransmission = false;
             Xamarin.Insights.DisableExceptionCatching = false; 
-        }
+
+			Xamarin.Insights.Initialize(Mymdb.Core.Constants.Insights.ApiKey);
+		}
 	}
 }

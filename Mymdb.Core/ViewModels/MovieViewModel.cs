@@ -29,6 +29,8 @@ namespace Mymdb.Core.ViewModels
 			{
 				currentMovie = 	await storageService.GetMovie(id) ?? 
 								await movieService.GetMovie(id);
+
+				Insights.Track("Loading movie: " + currentMovie.Title);
 			}
 			else
 			{

@@ -1,10 +1,10 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using MonoTouch.Dialog;
 using Mymdb.Core.ViewModels;
 using Mymdb.Model;
@@ -27,7 +27,7 @@ namespace Mymdb.iOS
 
 			GAI.SharedInstance.DefaultTracker.Set(GAIConstants.ClientId, UIDevice.CurrentDevice.IdentifierForVendor.ToString());
 			GAI.SharedInstance.DefaultTracker.Set(GAIConstants.ScreenName, "Movies View");
-			GAI.SharedInstance.DefaultTracker.Send(GAIDictionaryBuilder.CreateAppView().Build());
+			GAI.SharedInstance.DefaultTracker.Send(GAIDictionaryBuilder.CreateScreenView().Build());
 
 //			Segment.Analytics.Client.Screen(UIDevice.CurrentDevice.IdentifierForVendor.ToString(), "Movies View");
 		}

@@ -13,7 +13,7 @@ using Xamarin.Forms;
 
 namespace Mymdb.WP
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage : FormsApplicationPage
     {
         // Constructor
         public MainPage()
@@ -32,7 +32,8 @@ namespace Mymdb.WP
 
             Forms.Init();
             ServiceRegistrar.Init();
-            Content = UI.App.GetMainPage().ConvertPageToUIElement(this);
+			LoadApplication(new UI.App());
+            //Content = UI.App.GetMainPage().ConvertPageToUIElement(this);
         }
 
         // Sample code for building a localized ApplicationBar

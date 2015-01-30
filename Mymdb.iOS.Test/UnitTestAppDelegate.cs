@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using MonoTouch.NUnit.UI;
 
 namespace Mymdb.iOS.Test
@@ -27,6 +27,9 @@ namespace Mymdb.iOS.Test
 		//
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
+#if DEBUG
+			Xamarin.Calabash.Start();
+#endif
 			// create a new window instance based on the screen size
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
 			runner = new TouchRunner(window);

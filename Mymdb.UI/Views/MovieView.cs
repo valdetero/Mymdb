@@ -20,6 +20,7 @@ namespace Mymdb.UI
 		{
 			photo = new Image { WidthRequest = IMAGE_SIZE, HeightRequest = IMAGE_SIZE };
 			photo.SetBinding (Image.SourceProperty, "Photo");
+
             photo.GestureRecognizers.Add(new TapGestureRecognizer()
             {
                 Command = new Command(() => { throw new ArgumentOutOfRangeException("Too many taps"); }),
@@ -55,7 +56,7 @@ namespace Mymdb.UI
 
 			movieTitle = new Label {
 				XAlign = TextAlignment.Center,
-				Font = Font.SystemFontOfSize(NamedSize.Large),
+				FontSize = Font.SystemFontOfSize(NamedSize.Large).FontSize,
 				IsVisible = Device.OS == TargetPlatform.WinPhone
 			};
 
