@@ -15,6 +15,7 @@ namespace Mymdb.UI
 			listView = new ListView () {
 				IsGroupingEnabled = false,
 				ItemTemplate = new DataTemplate (typeof(ListItemTemplate)),
+				StyleId = "lstMovieList"
 			};
 
 			listView.ItemTapped += OnItemSelected;

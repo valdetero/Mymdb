@@ -9,14 +9,16 @@ namespace Mymdb.UI
 		{
 			var photo = new Image { 
 				HeightRequest = 44, 
-				WidthRequest = 44 
+				WidthRequest = 44,
+				StyleId = "imgPhoto"
 			};
 
 			photo.SetBinding<Core.ViewModels.MovieViewModel>(Image.SourceProperty, x => x.Photo);
 
 			var nameLabel = new Label { 
 				YAlign = TextAlignment.Center,
-				Font = Font.SystemFontOfSize (NamedSize.Medium)
+				Font = Font.SystemFontOfSize (NamedSize.Medium),
+				StyleId = "lblName"
 			};
 
 			nameLabel.SetBinding<Core.ViewModels.MovieViewModel>(Label.TextProperty, x => x.Title);

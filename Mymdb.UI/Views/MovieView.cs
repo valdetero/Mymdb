@@ -18,7 +18,12 @@ namespace Mymdb.UI
 
 		public MovieView()
 		{
-			photo = new Image { WidthRequest = IMAGE_SIZE, HeightRequest = IMAGE_SIZE };
+			photo = new Image 
+			{ 
+				WidthRequest = IMAGE_SIZE, 
+				HeightRequest = IMAGE_SIZE,
+				StyleId = "imgPhoto"
+			};
 			photo.SetBinding (Image.SourceProperty, "Photo");
 
             photo.GestureRecognizers.Add(new TapGestureRecognizer()
@@ -29,11 +34,17 @@ namespace Mymdb.UI
 
             favoriteLabel = new Label { Text = "Favorite?" };
 
-			favoriteSwitch = new Switch ();
+			favoriteSwitch = new Switch 
+			{
+				StyleId = "swtFavorite"
+			};
 			favoriteSwitch.SetBinding(Switch.IsToggledProperty, "IsFavorite");
 
 			webView = new WebView();
-			imdbLink = new ExtendedLabel();
+			imdbLink = new ExtendedLabel
+			{
+				StyleId = "lnkImdb"
+			};
 			imdbLink.IsUnderline = true;
 			imdbLink.TextColor = Color.Blue;
             imdbLink.GestureRecognizers.Add(new TapGestureRecognizer()
@@ -57,11 +68,14 @@ namespace Mymdb.UI
 			movieTitle = new Label {
 				XAlign = TextAlignment.Center,
 				FontSize = Font.SystemFontOfSize(NamedSize.Large).FontSize,
-				IsVisible = Device.OS == TargetPlatform.WinPhone
+				IsVisible = Device.OS == TargetPlatform.WinPhone,
+				StyleId = "lblTitle",
+				ClassId = "lblTitle"
 			};
 
 			var save = new Button {
 				Text = "Save",
+				StyleId = "btnSave"
 			};
 			save.Clicked += async (sender, e) => {
 				await viewModel.ExecuteSaveMovieCommand();
@@ -70,7 +84,8 @@ namespace Mymdb.UI
 
 			var delete = new Button {
 				Text = "Delete",
-				TextColor = Color.Red
+				TextColor = Color.Red,
+				StyleId = "btnDelete"
 			};
 			delete.Clicked += async (sender, e) => {
 				await viewModel.ExecuteDeleteMovieCommand(viewModel.Id);
@@ -80,7 +95,8 @@ namespace Mymdb.UI
             var bad = new Button
             {
                 Text = "Throw Exception",
-                TextColor = Color.Lime
+                TextColor = Color.Lime,
+				StyleId = "btnThrow"
             };
             bad.Clicked += (s, e) => {
                 throw new NotImplementedException("Bad button");

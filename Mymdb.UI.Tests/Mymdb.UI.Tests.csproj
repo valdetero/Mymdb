@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UITests.cs" />
+    <Compile Include="Platform.cs" />
+    <Compile Include="IScreenQueries.cs" />
+    <Compile Include="iOSQueries.cs" />
+    <Compile Include="AndroidQueries.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

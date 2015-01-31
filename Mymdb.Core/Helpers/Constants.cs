@@ -30,6 +30,11 @@ namespace Mymdb.Core
 		{
 			public const string ApiKey = "d639cbc9e2fd166cea979b9fa32d1b8f26d6010d";
 		}
+
+		public struct TestCloud
+		{
+			public const string ApiKey = "";
+		}
     }
 }
 

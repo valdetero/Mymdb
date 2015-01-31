@@ -37,11 +37,14 @@ namespace Mymdb.iOS
 		{
             InitAnalytics();
             Forms.Init();
+			Forms.ViewInitialized += (sender, e) => {
+				if(e.View.StyleId != null)
+					e.NativeView.AccessibilityIdentifier = e.View.StyleId;
+			};
 #if DEBUG
 			Xamarin.Calabash.Start();
 #endif
 
-			Forms.Init();
 			ServiceRegistrar.Init();
 
 			LoadApplication(new App());

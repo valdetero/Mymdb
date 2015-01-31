@@ -30,6 +30,10 @@ namespace Mymdb.Droid.Views
             Xamarin.Insights.DisableExceptionCatching = false;
 
             Xamarin.Forms.Forms.Init(this, bundle);
+			Xamarin.Forms.Forms.ViewInitialized += (sender, e) => {
+				if(!string.IsNullOrWhiteSpace(e.View.StyleId))
+					e.NativeView.ContentDescription = e.View.StyleId;
+			};
 
 			IoC.ServiceContainer.Register<Xamarin.Forms.Platform.Android.FormsApplicationActivity>(() => this);
             ServiceRegistrar.Init();
