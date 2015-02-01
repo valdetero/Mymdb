@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Mymdb.Interfaces;
 using Mymdb.Core.Services;
 
-namespace Mymdb.iOS.Test
+namespace Mymdb.Test
 {
 	[TestFixture]
 	public class MovieServiceTests

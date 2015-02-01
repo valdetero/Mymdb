@@ -6,13 +6,12 @@ using NUnit.Framework;
 
 using SQLite.Net;
 using SQLite.Net.Async;
-//using SQLite.Net.Platform.XamarinIOS;
 
 using Mymdb.Model;
 using Mymdb.Interfaces;
 using Mymdb.Core.Services;
 
-namespace Mymdb.iOS.Test
+namespace Mymdb.Test
 {
 
 	[TestFixture]
@@ -34,11 +33,12 @@ namespace Mymdb.iOS.Test
 		[TestFixtureSetUp]
 		public void Init()
 		{
+			ServiceRegistrar.Init();
 //			connLock = new SQLiteConnectionWithLock(new SQLitePlatformIOS(), new SQLiteConnectionString(DB_LOCATION, false));
-			var connectionFactory = new Func<SQLiteConnectionWithLock>(() => connLock);
-			connection = new SQLiteAsyncConnection(connectionFactory);
-
-			IoC.ServiceContainer.Register<IStorageService>(() => new StorageService(connection));
+//			var connectionFactory = new Func<SQLiteConnectionWithLock>(() => connLock);
+//			connection = new SQLiteAsyncConnection(connectionFactory);
+//
+//			IoC.ServiceContainer.Register<IStorageService>(() => new StorageService(connection));
 		}
 
 		[TestFixtureTearDown]
