@@ -1,5 +1,5 @@
 ﻿<Properties StartupItem="Mymdb.iOS/Mymdb.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|Droid" PreferredExecutionTarget="Android.Nexus 4 (KitKat)" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5s.8.2" />
   <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
